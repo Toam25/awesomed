@@ -1,0 +1,83 @@
+.profil{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height : 400px;
+}
+.image_profil{
+    width: 200px;
+    height: 200px;
+    border: 1px solid #202340;
+    border-radius: 100%;
+    padding: 5px;
+    position: relative;
+}
+.navbar.navbar-default {
+    position: sticky !important;
+    top: 0;
+    z-index: 3;
+}
+.profil_user_name, .profil_password, .profil_cv{
+    display: flex;
+    flex-direction: column;
+    align-items: unset;
+    width: 100%;
+}
+.info-user {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(0,0,0,0.2);
+    padding: 10px;
+    width: 50%;
+    min-width: 250px;
+    position: relative;
+}
+@media (max-width: 760px) {
+    .info-user{
+        width: 90%;
+   }
+  }
+.profil_user_name button, .profil_password button, .profil_cv button {
+    margin : 5px 0;
+}
+.image_profil img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.delete_cv{
+    position: absolute;
+    top: 50%;
+    z-index: 999;
+    right: 0;
+    color: white;
+    border: none;
+    background: #9d2b2b;
+    padding: 6px;
+    border-radius: 10px 0 0 10px;
+}
+.image_profil > button{
+    position: absolute;
+border: none;
+background: #202340;
+color: white;
+padding: 7px;
+border-radius: 50%;
+width: 34px;
+bottom: 11px;
+right: 14px;
+height: 34px;
+}
+.iframe{
+    margin: 5px;
+    border: 1px solid rgba(0,0,0,0.3);
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}

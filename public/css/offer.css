@@ -1,0 +1,43 @@
+#container_offer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#my_offer {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 13px;
+}
+.offer {
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 40px;
+    border-radius: 20px 0px 0px;
+    margin: 5px;
+}
+.btn_offer {
+    border: 2px solid rgba(7, 240, 175, 0.53);
+    text-align: center;
+    border-radius: 0px 50px 50px;
+}
+.offer h4 {
+    text-align: center;
+}
+.tarif {
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+.info_{
+    display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.my_security {
+    width: 100%;
+display: flex;
+justify-content: space-between;
+margin: 45px 0;
+}
