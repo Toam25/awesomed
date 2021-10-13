@@ -1,0 +1,39 @@
+<div id="header">
+ 
+	<div class="_header">
+		<div class="">
+			<div class="header-logo">
+				<a href="/" class="logo">
+					<img src="{{asset('images/'~boutique.logo)}}" alt="">
+				</a>
+				<span class="shop_name">
+					{{boutique.name}}
+					{#
+						<i class="fa fa-phone" style="color:#df2121"></i>
+						<span class="contact_shop">{{boutique.contact}}</span>
+					#}
+					
+				</span>
+			</div>
+		</div>
+		{% if shopLink is not same as("") %}
+			<a href={{boutique.externalLink}} target="_blank" class="link_my_shop">{{ shopLink }}</a>
+		{% endif %}
+		{#<form style="margin-top: 7px;" class="aside">
+		<div class="header-search">
+			
+				<input class="input" placeholder="Que vous cherchez chez nous ?" name="q">
+				<input type="hidden" name="shop_id" value="{{ boutique.id }}">
+				<button class="search-btn">Search</button>
+			</form>
+         
+		</div>
+		   #}
+		{% include "boutique/dependancies/_actionUser_gm.html.twig"%}
+
+	</div>
+
+	<div class="inother-ajax">
+		<div class="div-inother"></div>
+	</div>
+</div></header>

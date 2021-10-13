@@ -1,0 +1,51 @@
+<header>
+    <!-- TOP HEADER -->
+    <!--div id="top-header">
+        <div class="container">
+            <ul class="header-cordinate">
+                <li><a href="#"><i class="fa fa-phone"></i>  {{ boutique.contact}}</a></li>
+                <li style="margin-left: 11px;margin-right: 11px;"><a href="#"><i class="fa fa-envelope-o"></i>  {{ boutique.mail}}</a></li>
+                <li><a href="#"><i class="fa fa-map-marker"></i>  {{ boutique.address}}</a></li>
+            </ul>
+        </div>
+    </div-->
+    <!-- /TOP HEADER -->
+
+    <!-- MAIN HEADER -->
+     <div id='list_shop'>
+     </div>
+    <div id="header" style="display: grid;justify-content: space-between; align-items: center;grid-template-columns: 2fr 4fr 1fr;">
+        <!-- container -->
+        
+            <!-- row -->
+            
+                <!-- LOGO -->
+                <div class="">
+                    <div class="header-logo">
+                        <a href="{{ path('shop',{  })}}" class="logo">
+                            <img  src="{{asset('images/'~boutique.logo)}}" alt="">
+                        </a>
+                      <span class="shop_name" style="color:white !important"> {{boutique.name}} <br> 
+                    </div>
+                </div>
+                <!-- /LOGO -->
+
+                <!-- SEARCH BAR -->
+
+                {% include "boutique/dependancies/headersearch.html.twig" %}             
+               
+                <!-- /SEARCH BAR -->
+
+                <!-- ACCOUNT -->
+                 {% include "boutique/dependancies/_actionUser.html.twig"%}
+                <!-- /ACCOUNT -->
+           
+            <!-- row -->
+        
+        <!-- container -->
+    </div>
+    <div class="inother-ajax">
+        <div class="div-inother"></div>
+    </div>
+    <!-- /MAIN HEADER -->
+</header>

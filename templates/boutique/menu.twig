@@ -1,0 +1,73 @@
+
+    <header class="header-section d-lg-block d-none">
+        <div class="header-bottom sticky-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12  ">
+                        <div class="main-menu">
+                            <nav class="d-flex justify-content-between align-items-center">
+                                <ul>
+                                    {% include "boutique/dependancies/_index_menu.html.twig"%}
+                                </ul>
+                                <div class="mobile-header--right">
+                                     {% include "boutique/dependancies/_actionUser.html.twig"%}
+                                </div>
+                            </nav>
+                        </div> 
+                    </div>
+                
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-header-section d-block d-lg-none">
+        
+        <div class="mobile-header-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-between align-items-center" style="background: #202340;">
+                        <div class="mobile-header--left">
+                            <a href="#mobile-menu-offcanvas" class="mobile-menu offcanvas-toggle">
+                                <span class="mobile-menu-dash"></span>
+                                <span class="mobile-menu-dash"></span>
+                                <span class="mobile-menu-dash"></span>
+                            </a>
+                        </div>
+                        <div class="mobile-header--right">
+                             {% include "boutique/dependancies/_actionUser.html.twig"%}
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div> 
+<div id="mobile-menu-offcanvas" class="offcanvas offcanvas-leftside offcanvas-mobile-menu-section ">
+
+	<div class="offcanvas-header text-right">
+		<button class="offcanvas-close">
+			<i class="fa fa-times"></i>
+		</button>
+	</div>
+	<div>
+		<div
+			class="offcanvas-mobile-menu-wrapper">
+			{#  tsy izy ito 
+			            <div class="mobile-menu-top">
+			                <span>Welcome to our store!</span>
+			            </div>
+			           #}
+			<div class="mobile-menu-center">
+
+				<div class="offcanvas-menu">
+					<ul class="ul-mobil">
+						{% include "boutique/dependancies/_index_menu_mobil.html.twig"%}
+					</ul>
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
+</div>

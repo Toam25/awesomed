@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user.firstname }} {{ user.name }} {% endblock %}
+{% block stylesheets %}
+	 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+   
+    <link href="{{ asset('css/bootstrap3.3.css')}}" rel="stylesheet" type="text/css">
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/index.css') }}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/profil.css') }}"/>
+
+{% endblock %}
+{% block body %}
+
+{% include "boutique/profil.navbar.html.twig" %}
+  <div class="profil">
+      <div class="image_profil">
+         <img src="{{ asset('images/'~ user.avatar) }}" id="profil_preview_image"class="preview_image" alt="{{user.name }}">
+      </div>
+
+      {% if app.user.id is defined and user.id is  same as(app.user.id) %}
+      
+       <div class="info-user">
+         <h4>Information Général</h4>
+          <form class="profil_user_name" action="{{ path('apiprofil_update_user',{'id' : app.user.id})  }}">
+            <label> Nom : </label>
+            <input name="name" value="{{ user.name }}" class="form-control" required>
+            <label> Prenom : </label>
+            <input name="first_name" value = "{{ user.firstname }}"  class="form-control" required>
+            <label> Avatar : </label>
+            <input name="images" type = "file" class="form-control file">
+            <button  type="submit" class="btn btn-success btn-submit">Enregistrer</button>
+        </form>
+        </div>
+        <div class="info-user">
+        
+        <h4>Option de connexion</h4>
+        <form class="profil_password" action="{{ path('apiprofil_password',{'id' : app.user.id})  }}">
+            <label>Adresse mail</label>
+            <input name="mail" value="{{ user.email }}" class="form-control" type="email" required>
+            <label> Ancien mot de passe : </label>
+            <input name="a_password" value="" class="form-control" type="password" required>
+            <label> Nouveaux mot de passe : </label>
+            <input name="new_password"  class="form-control new_password" type="password">
+            <label>confirmé votre mot de passe : </label>
+            <input name="confirm_password"  class="form-control confirm_password" type="password">
+            <button  type="submit" class="btn btn-success btn-submit2">Enregistrer</button>
+        </form>
+         </div>
+         <div class="info-user">
+            <h4>Profil Emploi</h4>
+                <iframe  class="iframe"
+                {% if profilJob.cv is defined %} 
+                    src="{{asset('pdf/'~profilJob.cv)}}"
+                {% endif %}
+                     frameborder="0" width="100%" >
+                </iframe>
+                    <button class="delete_cv btn-submit4" 
+                        {% if profilJob.cv is not  defined %} 
+                           style = "display:none"
+                       {% endif %}
+                      >Supprimez</button>           
+                Changer votre Cv ?
+            <form class="profil_cv" action="{{ path('apiprofil_cv',{'id' : app.user.id})  }}">
+                <input name="cv" type = "file" class="form-control">
+                <button  type="submit" class="btn btn-success btn-submit3">Enregistrer</button>
+            </form>
+
+         </div>
+<div class="col-xl-12 col-md-12 mb-4">
+	<div class="card border-bottom-warning shadow h-100 py-2">
+		<div class="card-body">
+			<div class=" no-gutters align-items-center">
+				<div class="col mr-2">
+					<span class="text-xs font-weight-bold text-success text-uppercase mb-1">Liste des personnes bloqué 
+					</span>
+          {% if app.user.blocked is defined %}
+            {% for item in app.user.blocked %}
+                <div>
+                    {{ item.name }}  <button class="debloque border-0 badge badge-warning" name ="{{item.id_conversation}}">Débloquer </button>
+                </div>
+            {% endfor %}
+          {% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+<br>
+<p></p>
+      {% else %} 
+           <p>{{ user.firstname }} {{ user.name }}</p>
+      {% endif %}
+  </div>
+  	{% if not app.user %}
+		{% include 'boutique/dependancies/connexion.html.twig'%}
+	{% endif %}
+	{% include "boutique/dependancies/_footer.html.twig" %}
+
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('js/profil.js') }}"> </script>
+  <script src="{{ asset('js/connexion.js') }}"> </script>
+{% endblock %}
+

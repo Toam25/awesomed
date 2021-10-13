@@ -1,0 +1,212 @@
+<div class="usersPers">
+	<div class=" clearfix">
+		<div id="header-ctn" class="header-ctn">
+				 
+				{% if app.user %} 
+				
+					<div style="" class="membre">
+							<a href="">
+								<i class="fa fa-store"></i>
+								<span class="action_name">Boutiques</span>
+							</a>
+							
+					</div>
+					   {% if app.user.boutiques is defined and "ROLE_ADMIN"  in app.user.roles and  app.user.boutiques[0].getDetailOffer() is not same as('Gratuit') or "ROLE_SUPER_ADMIN" in app.user.roles or "ROLE_USER" in app.user.roles%}
+					<div style="" class="mynotification">
+						<a href="">
+							<i class="fa fa-bell"></i>
+							 <span class="action_name">Notification</span>
+						
+							<div class="qtyN qtymess" id="my_nbr_notification">
+									 {% if app.user.nbrNotification != 0 %} 
+									<span class="badge badge-danger badge-counter nbr_notification">{{ app.user.nbrNotification }}</span>
+							 {% endif %}
+							</div>
+						</a>
+							
+					</div>
+					<div id="" style="" class="message-in" name="{{boutique.id}}">
+							<a href="">
+								<i class="fa fa-envelope"></i>
+								<span class="action_name">Message</span>
+								{# {% if app.user.nbrMessage != 0 %} 
+										<span class="badge badge-danger badge-counter nbr_notification">{{ app.user.nbrMessage }}</span>
+								{% endif %} #}
+								{# <div class="qty qtymess" id="my_nbr_message">
+									0
+								</div> #}
+							</a>
+							
+					</div>
+				   {% endif %}
+
+				{%  endif %}
+			{# messages #}
+			{# 
+				<div id="message">
+				{% if app.user%}
+					<a href="">
+						<i class="fa fa-envelope"></i>
+						<span>Message</span>
+						<div class="qty qtymess">
+							0
+						</div>
+					</a>
+				{% else %}
+					<a href="" class="_connexion">
+						<i class="fa fa-envelope"></i>
+						<span>Message</span>
+						<div class="qty qtymess">
+							0
+						</div>
+					</a>
+				{% endif %}
+			</div>
+			#}
+			{#fin messages#}
+			{# membre #}
+
+			{#
+			<div id="membre">
+				{% if app.user%}
+					<a href="">
+						<i class="fa fa-user"></i>
+						<span>Membres</span>
+					</a>
+				{% else %}
+					<a href="" class="_connexion">
+						<i class="fa fa-user"></i>
+						<span>Membres</span>
+					</a>
+				{% endif %}
+			</div>
+			#}
+			{#fin membre#}
+			<!-- Wishlist -->
+			{#
+									<div id="whishlist">
+										{% if app.user%}
+											<a href="{{ path('show_cart',{'type':'wish'})}}">
+												<i class="fa fa-heart-o"></i>
+												<span>Souhait</span>
+												<div class="qty qtywish">
+													{% if app.user %}
+														{{ mycart(app.user,'wish','quantity')}}
+													{% else %}
+														0
+													{% endif %}
+												</div>
+											</a>
+										{% else %}
+											<a href="" class="_connexion">
+												<i class="fa fa-heart-o"></i>
+												<span>Souhait</span>
+												<div class="qty qtywish">
+													{% if app.user %}
+														{{ mycart(app.user,'wish','quantity')}}
+													{% else %}
+														0
+													{% endif %}
+												</div>
+											</a>
+										{% endif %}
+									</div>
+									#}
+			<!-- /Wishlist -->
+			
+									<div id="cart">
+										{% if app.user%}
+											<a href="{{ path('show_cart',{'type':'panier'})}}">
+												<i class="fa fa-shopping-cart"></i>
+												<span class="action_name">
+													Panier
+												</span>
+												<div class="qty cart-qty">
+													{% if app.user %}
+														{{ mycart(app.user,'panier','quantity')}}
+													{% else %}
+														0
+													{% endif %}
+												</div>
+											</a>
+										{# {% else %}
+											<a href="" class="_connexion">
+												<i class="fa fa-shopping-cart"></i>
+												<span>
+													Panier
+												</span>
+												<div class="qty cart-qty">
+													{% if app.user %}
+														{{ mycart(app.user,'panier','quantity')}}
+													{% else %}
+														0
+													{% endif %}
+												</div>
+											</a> #}
+										{% endif %}
+									</div>
+									
+			<!-- Cart -->
+				<div class="dropdown"> {% if app.user %}
+					<a class="dropdown-toggle " data-toggle="dropdown" aria-expanded="true">
+						<img src="{{asset('images/'~app.user.avatar)}}" class="_mylogo" alt="">
+						{# <span>{{ app.user.name}}</span> #}
+					</a>
+					<ul class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="userDropdown">
+						<li>
+							<a class="dropdown-item" href="{{path('profil',{'id': app.user.id,'slug' : slugify(app.user.name) ~"-"~slugify(app.user.firstname) })}}">
+								<i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+								Mon profil</a>
+						</li>
+						{#
+						<li>
+							<a class="dropdown-item" href="{{ path('home')}}">
+								<i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+								Mon boutique</a>
+						</li>
+						<li></li>
+						<li>
+							<a class="dropdown-item" href="{{ path('logout')}}">
+								<i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+								Historique</a>
+						</li>
+						#}
+						{% if "ROLE_ADMIN" in app.user.roles or "ROLE_SUPER_ADMIN" in app.user.roles %}
+						<li>
+							<a class="dropdown-item" href="{{ path('home') }}">
+								<i class="fa fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+								Administration</a>
+						</li>
+						{% endif %}
+						<li>
+							<div class="divider"></div>
+						</li>
+						<li>
+							<a class="dropdown-item logout" href="{{ path('logout')}}">
+								<i class="fa fa-chevron-right text-gray-400"></i>
+								Déconnexion</a>
+						</li>
+					
+					</ul>
+				{% else %}
+					<a class="_connexion">
+						<i class="fa fa-user"></i>
+						<span>My Count</span>
+					</a>
+				{% endif %}
+
+			</div>
+			<!-- /Cart -->
+
+			<!-- Menu Toogle -->
+			{#<div class="menu-toggle">
+				<a href="#">
+					<i class="fa fa-bars"></i>
+					<span>Menu</span>
+				</a>
+			</div>
+			#}
+			<!-- /Menu Toogle -->
+		</div>
+	</div>
+</div>

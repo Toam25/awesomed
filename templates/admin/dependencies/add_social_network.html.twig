@@ -1,0 +1,31 @@
+<div id="container_social_network"class= "row" >
+    <div class="col-md-5">
+        <h4>Ajout</h4>
+        {{ form_start(form,{'attr':{'class':'social_network'}})}}
+             {{ form_row(form.photos,{'attr':{'required':'required'}})}}
+             {{ form_row(form.nameLink)}}
+             {{ form_row(form.link)}}
+             {{ form_row(form.description)}}
+            <div class="container_btn_add_social">
+                <button  class="btn btn-success btn-submit" type="submit">Enregistrer</button>
+            </div>
+            
+        {{ form_end(form)}}
+    </div>
+    <div class="col-md-7">
+        <h4>Modele</h4>
+        <div class="container_model">
+            <div class="container_model_image" >
+                <label>Images :</label>
+                <div class="preview_image">
+                            <img id="preview_image" src="">
+                </div>
+            </div>
+            <div class="container_model_descrption">
+                    <label>Description :</label>
+                    <p class="p_social_description"> <span class="des"></span> <a href="" target="_blank" class="a_link_social_network"></a></p>
+            </div>
+            
+        </div>
+    </div>
+</div>
